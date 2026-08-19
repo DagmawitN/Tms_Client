@@ -11,7 +11,25 @@ loadComponent: () => import('./features/course-detail/course-detail').then(m => 
 },
 {
 path: 'enroll',
-loadComponent: () => import('./features/enrollment-form/enrollment-form')
-.then(m => m.EnrollmentForm)
-}
+loadComponent: () => import('./features/enrollment-form/enrollment-form').then(m => m.EnrollmentForm)
+},
+{
+path: 'dashboard',
+loadComponent: () =>
+import('./features/instructor-dashboard/instructor-dashboard').then(m => m.InstructorDashboard)
+},
+{ path: '', redirectTo: 'dashboard', pathMatch: 'full' },
+{
+path: 'dashboard',
+loadComponent: () =>
+import('./features/instructor-dashboard/instructor-dashboard')
+.then(m => m.InstructorDashboard)
+},
+{
+path: 'enrollments',
+loadComponent: () =>
+import('./features/enrollment-list/enrollment-list')
+.then(m => m.EnrollmentList)
+},
+{ path: '', redirectTo: 'dashboard', pathMatch: 'full' }
 ];
