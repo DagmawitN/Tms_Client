@@ -1,0 +1,30 @@
+<main class="admin-course-list">
+  <header class="page-header">
+    <div>
+      <p class="eyebrow">Administration</p>
+      <h1>Course Management</h1>
+      <p>Manage courses and their instructors.</p>
+    </div>
+  </header>
+
+  @if (isLoading()) {
+    <p>Loading courses...</p>
+  }
+
+  @if (errorMessage(); as message) {
+    <p class="error-message">{{ message }}</p>
+  }
+
+  @if (!isLoading() && !errorMessage()) {
+    <section class="course-list">
+      @for (course of courses(); track course.id) {
+        <article class="course-card">
+          <h2>{{ course.code }}</h2>
+          <p>{{ course.title }}</p>
+          <p>Capacity: {{ course.maxCapacity }}</p>
+          <p>Enrolled: {{ course.enrollmentCount }}</p>
+        </article>
+      }
+    </section>
+  }
+</main>
